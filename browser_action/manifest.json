@@ -1,0 +1,39 @@
+{
+	"manifest_version": 2,
+	"name": "__MSG_extensionName__", // from en locale folder
+	"version": "0.1.0",
+	"browser_action": {
+		"default_title": "This is the extension title",
+		"default_popup": "popup/popup.html"
+	},
+	"background": {
+		"scripts": ["background.js"],
+		"persistent": false
+		/*
+		convert background page to event page
+
+		background page - load extension resources when Chrome loads/opens
+		event page - load extension resources when extension loads/clicks
+		*/
+	},
+	/*
+	tabs permissions: allow us see the tabs info like
+	the URL inside the address bar
+	*/
+	"permissions": ["tabs", "http://numbersapi.com/"], // <-- jQuery AJAX
+	"content_scripts": 	[{
+							"matches": ["*://*/*"],
+							/*
+							this means we want to inject our content scripts
+							inside all opened pages inside the browser
+							
+							we don't really care the protocol (http OR https),
+							the domain and the path after the domain
+							*/
+							"js"	: ["content.js"],
+							"css"	: ["content.css"]
+						}],
+	"default_locale": "en",
+	// load jQuery from Google CDN
+	"content_security_policy": "script-src 'self' https://*.googleapis.com; object-src 'self'"
+}

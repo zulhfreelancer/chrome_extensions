@@ -1,0 +1,13 @@
+{
+	"manifest_version": 2,
+	"name": "page_action",
+	"version": "0.1.0",
+	"page_action": {
+		"default_title": "My page action Chrome extension"
+	},
+	"background": {
+		"scripts": ["background.js"],
+		"persistent": false
+	},
+	"permissions": ["declarativeContent"]
+}
