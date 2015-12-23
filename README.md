@@ -2,6 +2,7 @@
 
 
 Inside the course, I learned how to create 4 types of Chrome extensions:
+
 1. Browser action
 2. Devtools
 3. Override
